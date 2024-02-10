@@ -59,7 +59,9 @@ this.formEspecialidad.patchValue({
           }else
             this._compartidoService.mostrarAlerta('No se pudo crear la especialidad', 'Error');
         },
-        error:(e)=> {}
+        error:(e)=> {
+            this._compartidoService.mostrarAlerta( e.error.mensaje,'Error');
+        }
       })
     }
     else{
@@ -80,7 +82,7 @@ this.formEspecialidad.patchValue({
          },
          error: (e) => {
                        this._compartidoService.mostrarAlerta(
-                         e.error.errores,
+                         e.error.mensaje,
                          'Error'
                        );
          },

@@ -3,9 +3,10 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsuarioModule } from './usuario/usuario.module';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,11 @@ import { UsuarioModule } from './usuario/usuario.module';
   ],
   imports:[BrowserModule,AppRoutingModule,HttpClientModule,BrowserAnimationsModule,UsuarioModule],
   providers: [
-    provideClientHydration()
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:authInterceptor,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

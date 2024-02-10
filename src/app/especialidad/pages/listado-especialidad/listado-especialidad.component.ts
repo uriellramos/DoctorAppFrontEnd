@@ -65,7 +65,9 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit {
           );
         }
       },
-      error: (e) => {},
+      error: (e) => {
+        this._compartidoService.mostrarAlerta(e.error.mensaje,'Error')
+      },
     });
   }
   removerEspecialidad(especialidad: Especialidad) {
@@ -95,7 +97,9 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit {
               );
             }
           },
-          error: (e) => {},
+          error: (e) => {
+            this._compartidoService.mostrarAlerta(e.error.mensaje, 'Error');
+          },
         });
       }
     });
