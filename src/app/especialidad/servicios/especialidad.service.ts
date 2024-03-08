@@ -15,12 +15,7 @@ export class EspecialidadService {
   constructor(private http: HttpClient, private cookieService:CookieService) {}
 
   lista(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.baseUrl}`,{
-      headers:
-      {
-        'Authorization':this.cookieService.get('Authorization')
-      }
-    });
+    return this.http.get<ApiResponse>(`${this.baseUrl}`);
   }
   listaActivos(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(`${this.baseUrl}ListadoActivos`);
